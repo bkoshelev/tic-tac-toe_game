@@ -71,6 +71,10 @@ module.exports = {
       template: HtmlWebpackTemplate,
       appMountId: 'root',
       title: 'React Boilderplate',
+      meta: {
+        name: "mobile-web-app-capable",
+        content: 'yes'
+      }
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',

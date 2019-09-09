@@ -33,7 +33,8 @@ module.exports = {
     'no-console': 0,
     "no-use-before-define": 0,
     "import/no-extraneous-dependencies": 0,
-    "react/display-name": 0
+    "react/display-name": 0,
+    "unicorn/prevent-abbreviations": 0
   },
   "settings": {
     "react": {

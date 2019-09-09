@@ -10,7 +10,7 @@ module.exports = {
     PostCssNormalize({}),
     PostCssNested(),
     PostCssAutoprefixer(),
-    PostCssAutoreset(),
+   // PostCssAutoreset(),
     PostCssPresetEnv(),
     PostCssInlineSvg()
   ],
