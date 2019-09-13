@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  viewBox="-148 3 300 300"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <image
+    width="2048"
+    height="2048"
+    style="visibility: hidden;"
+    x="-555.828"
+    y="-445.478"
+    xlink:href="data:image/jpg;charset=utf-8;base64"
+  />
+  <g>
+    <line
+      style="stroke-linecap: round; stroke-width: 44px; fill: rgb(215, 58, 51); stroke: rgb(215, 58, 51);"
+      x1="101.547"
+      y1="53"
+      x2="-97.956"
+      y2="251.123"
+    />
+    <line
+      style="stroke-linecap: round; stroke-width: 44px; fill: rgb(215, 58, 51); stroke: rgb(215, 58, 51);"
+      x1="101.752"
+      y1="53.938"
+      x2="-97.751"
+      y2="252.062"
+      transform="matrix(0, -1, 1, 0, -150.9995, 155.000492)"
+    />
+  </g>
+</svg>
