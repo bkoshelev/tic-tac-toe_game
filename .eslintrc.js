@@ -18,7 +18,8 @@ module.exports = {
     "prettier",
     "prettier/react",
     "plugin:compat/recommended",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -27,14 +28,18 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: "module"
   },
-  plugins: ["react", "babel", "react-hooks", 'prettier', 'import', "unicorn"],
+  plugins: ["react", "babel", "react-hooks", 'prettier', 'import', "unicorn", "jsx-a11y"],
   rules: {
     "unicorn/filename-case": 0,
-    'no-console': 0,
-    "no-use-before-define": 0,
-    "import/no-extraneous-dependencies": 0,
+   // 'no-console': 0,
+   // "no-use-before-define": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js", "**/*.stories.js"] }],
     "react/display-name": 0,
-    "unicorn/prevent-abbreviations": 0
+    "unicorn/prevent-abbreviations": 0,
+    "no-magic-numbers": ["error", { "enforceConst": true, detectObjects: true }],
+    "no-warning-comments": ["error"],
+    "max-len": ["error", { "code": 80 }],
+    "react/prop-types": ["error", { ignore: ['children'], }]
   },
   "settings": {
     "react": {

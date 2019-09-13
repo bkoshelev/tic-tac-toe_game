@@ -1,4 +1,5 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -11,9 +12,9 @@ module.exports = {
   mode: 'development',
   devServer: {
     historyApiFallback: true,
+    host: "0.0.0.0",
     port: 8081,
     hot: true,
-    host: '0.0.0.0',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,6 +59,20 @@ module.exports = {
         test: /\.pcss$/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true // true outputs JSX tags
+            }
+          }
+        ]
+      }
     ],
   },
   resolve: {
@@ -70,17 +85,25 @@ module.exports = {
       inject: false,
       template: HtmlWebpackTemplate,
       appMountId: 'root',
-      title: 'React Boilderplate',
+      title: 'Tic-Tac-Toe Game',
       meta: {
         name: "mobile-web-app-capable",
-        content: 'yes'
-      }
+        content: 'yes',
+        'http-equiv': "Content-Security-Policy"
+      },
+      links: [
+        {
+          href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap',
+          rel: 'stylesheet',
+
+        }
+      ]
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     })
   ],
-   optimization: {
+  optimization: {
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
@@ -91,5 +114,5 @@ module.exports = {
         },
       },
     },
-  }, 
+  },
 };
