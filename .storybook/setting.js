@@ -11,6 +11,9 @@ const pageWrapperDecoratorStyle = css`
   }
 `;
 
+
+
+
 const pageWrapperDecorator = storyFn => (
   <div
     className={pageWrapperDecoratorStyle}
@@ -22,7 +25,7 @@ const pageWrapperDecorator = storyFn => (
       justifyContent: 'center',
       backgroundColor: '#1b1942',
     }}>
-    {storyFn()}
+      {storyFn()}
   </div>
 );
 
