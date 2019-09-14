@@ -1,5 +1,5 @@
 on: push
-name: New workflow
+name: deploy admin
 jobs:
   install:
     name: Install
@@ -8,10 +8,14 @@ jobs:
     - uses: actions/checkout@master
     - name: Install
       uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
+      env:
+        NODE_ENV: production
       with:
         args: install
     - name: Build
       uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
+      env:
+        NODE_ENV: production
       with:
         args: run build
     - name: Deploy
@@ -19,7 +23,7 @@ jobs:
       env:
         HOST: ${{ secrets.HOST }}
         PASSWORD: ${{ secrets.PASSWORD }}
-        SOURCE: ./dist
+        SOURCE: build
         TARGET: /home/bkoshelev/tic-tac-toe_game/game
         USERNAME: ${{ secrets.USERNAME }}
       with:
