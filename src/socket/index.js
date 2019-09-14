@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
+import { socketUrl } from '../config';
 
-const socket = io('http://localhost:1337');
+const socket = io(socketUrl[process.env.NODE_ENV]);
 
 export default socket;
