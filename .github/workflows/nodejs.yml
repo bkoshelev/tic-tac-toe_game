@@ -23,7 +23,7 @@ jobs:
       env:
         HOST: ${{ secrets.HOST }}
         PASSWORD: ${{ secrets.PASSWORD }}
-        SOURCE: dist
+        SOURCE: dist/*
         TARGET: /home/bkoshelev/tic-tac-toe_game/game
         USERNAME: ${{ secrets.USERNAME }}
       with:
