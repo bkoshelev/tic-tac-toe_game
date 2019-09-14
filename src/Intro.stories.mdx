@@ -1,45 +1,168 @@
-<Meta title="Крестики-Нолики|Начало" />
+import appState from './../.storybook/static/appState.jpg';
+import gameState from './../.storybook/static/gameState.jpg';
+import backendOnEnterState from './../.storybook/static/backendOnEnterState.jpg';
+import backendGameBuilder from './../.storybook/static/backendGameBuilder.jpg';
+import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
+
+<Meta title="Крестики-Нолики|Начало" parameters={{ options: { showPanel: false, isFullscreen: true}}} decorators={[pageWrapperDecorator]} />
 
 # Документация к игре "Крестики-Нолики"
 
 <br/>
 
-## Дизайн 
+## Вступление
+<br/>
+
+Данная документация посвящена тестовому проекту ["Крестики-Нолики"](https://bkoshelev.dev/game) Front-End разработчка Кошелева Бориса ([Telegram](https://t-do.ru/bkoshelev),[Facebook](https://www.facebook.com/grom194))
+
+### Задача
+
+Проект реализован для демонстрации имеющихся навыков при устройстве на работу.
+
+### Описание игры
+
+Приложение представляет из себя классическую версию игры "Крестики-Нолики" с полем 3x3 для двоих игроков.
+
+Игроки поочередно ставят свой символ (крест или ноль) в одну из клеток.
+Побеждает тот, кто первым сделает ряд из трех своих символов.
+
+В случае, если все клетки заполнены, но ни один из игроков не выполнил условие для победы, объявляется ничья.
+
+
+
+## Front-End
+
+### Техническое задание // Постановка  (продуктовой )задачи (начало)
+
+Необходимо реализовать:
+
+- стартовый экран, с предложением начать игру
+- экран ожидания загрузки игры
+- экран игры
+- экран окончания игры
+- адаптивность 
+
+### Дизайн 
+
+Дизайн игры вдохновлен данными иллюстрациями:
 
 - https://www.gettyimages.co.uk/detail/illustration/tic-tac-toe-game-flat-design-icon-royalty-free-illustration/1146577964
 - https://dribbble.com/shots/6579910-Falling-Dots
 
 
-## Компоненты разбиты на группы
+### Реализация
+<br/>
 
-- https://medium.com/teamsubchannel/react-component-patterns-e7fb75be7bb0
-- https://medium.com/@abraztsov/%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B-%D0%B2-react-e5092c06f019
+#### 1. Настройка окружения
 
+Для ускорения разработки в проект добавлены следущие библиотеки:
 
-## Именование компонентов
-- **ComponentName** - Container Component (компонент с состоянием)
+- storybook
+- husky
+- postcss
+- prettier
+- stylelint
+- eslint
+- webpack
+
+#### 2. Основной стек разработки
+
+Ядро проекта состоит из следующих библиотек:
+
+- React 
+- linaria (css-in-js)
+- xstate (библиотека для реализации State машин)
+- socket.io
+
+#### 3. Каталог компонентов
+
+До разработки основной части проекта, реализован каталог визуальных компонентов:
+
+- [Ячейка игровой доски](/game_documentation/?path=/story/крестики-нолики-ui-components-board-cell--simple)
+- [Игровая доска](/game_documentation/?path=/story/%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA%D0%B8-%D0%BD%D0%BE%D0%BB%D0%B8%D0%BA%D0%B8-ui-components-gameboard--mobile)
+- [Кнопка на стартовом экране](/game_documentation/?path=/story/%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA%D0%B8-%D0%BD%D0%BE%D0%BB%D0%B8%D0%BA%D0%B8-ui-components-gameheader--desktop)
+- [Компонент экрана загрузки игры](/game_documentation/?path=/story/%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA%D0%B8-%D0%BD%D0%BE%D0%BB%D0%B8%D0%BA%D0%B8-ui-components-preloader--mobile)
+- [Компонент экрана окончания игры](/game_documentation/?path=/story/%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA%D0%B8-%D0%BD%D0%BE%D0%BB%D0%B8%D0%BA%D0%B8-ui-components-onfinishgamescreen--desktop)
+
+Компоненты разбиты на Контейнеры и Презентационные [подробнее...](https://medium.com/@abraztsov/%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B-%D0%B2-react-e5092c06f019)
+
+##### Именование стилей
+- **ComponentName** - Container Component (компонент с внутренним состоянием и логикой)
 - **[ComponentName]UI** - Presentation Component (компонент без логики)
+- **[ComponentName]Page** - компонент страницы проекта
+- **[ComponentName]Screen** -компонент экрана проекта
 
 
-## Линтеры
+#### 4. Основная часть
 
-- webhint
-- a11y
-- проверка на повтор кода
-- Очистить все console.log и комментарии
+Ядро проекта - одностраничное приложение с несколькими экранами.
 
-## Постановка  (продуктовой )задачи (начало)
+Логика в проекте реализована с помощью State Machine.
 
-## Настройка окружения
+Библиотека **xstate** позволяет визуализировать машины [пример](https://xstate.js.org/viz/)
 
-## Каталог компонентов
+<left>
+<figure>
+    <ZoomImage>
+  <img src={appState}  height="200px" />
+    </ZoomImage>
+  <figcaption>Схема управления экранами приложения</figcaption>
+</figure>
 
-## Back-end часть
+<figure>
+    <ZoomImage>
 
-## Front-End часть
+  <img src={gameState}  height="200px" />
+    </ZoomImage>
 
-## Тестирование
+  <figcaption>Схема управления игрой</figcaption>
+</figure>
+</left>
 
-## Deploy на сервер
 
-## Итог (конец) (продакшн)
+#### 5. Тестирование
+
+Скоро...
+
+#### 6. deploy на сервер
+
+Скоро...
+
+## Back-end
+
+Back-End часть проекта реализована на базе [**CMS Strapi**](https://github.com/strapi/strapi)
+
+> [мои принятые Pull Request в Strapi](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Amerged+author%3Agrom194+) 
+
+С ее помощью реализовано три типа Моделей:
+
+- **Rooms** (Комнаты)
+- **Players** (Игроки)
+- **Moves** (Действия) *// в данной игре используется исключительно для логирования*
+
+Машина состояний выступает в роли посредника между Front-End частю проекта и Базой Данных.
+
+<left>
+<figure>
+    <ZoomImage>
+  <img src={backendOnEnterState}  height="200px" />
+    </ZoomImage>
+  <figcaption>Схема соединения пользователя с игровой сессией</figcaption>
+</figure>
+</left>
+<left>
+    <figure>
+    <ZoomImage>
+  <img src={backendGameBuilder}  height="200px" />
+    </ZoomImage>
+  <figcaption>Схема игровой сессии</figcaption>
+</figure>
+</left>
+
+### TODO
+
+- [ ] Если игрок, ожидающий другого игрока, уходит со страницы - удалить сессию игры
+- [ ] Подсветка ряда победных клеток
+- [ ] Игра с ботом в случае, если второй игрок не найден
+- [ ] Если закрыть и открыть вкладку, то можно вернуться к текущей игре
+- [ ] Выводить список игр, к которым можно присоединится
