@@ -13,7 +13,7 @@ jobs:
     - name: Build
       uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
       with:
-        args: build
+        args: run build
     - name: Deploy
       uses: appleboy/scp-action@v0.0.1
       env:
