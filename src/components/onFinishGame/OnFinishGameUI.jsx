@@ -133,7 +133,7 @@ const OnFinishGameUI = ({ text }) => {
       <section className={cx(textStyle, text4style)}>
         <Header>Если вы хотите увидеть документацию к игре</Header>
         <article>
-          <a href="http://storybook.js.org">
+          <a href="/game/documentation">
             <StorybookIcon
               className={storybookIconStyle}
               viewBox={'250 0 50 100'}
@@ -153,7 +153,7 @@ const OnFinishGameUI = ({ text }) => {
               </a>
             </li>
             <li className={listItemStyle}>
-              <a href="https://t.me/bkoshelev">
+              <a href="https://t-do.ru/bkoshelev">
                 <TelegramIcon className={svgStyle}></TelegramIcon>
               </a>
             </li>
