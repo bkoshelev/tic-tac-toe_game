@@ -29,5 +29,5 @@ jobs:
       env:
         SOURCE: dist
         TARGET: /home/bkoshelev/tic-tac-toe_game/game
-        secrets: ["PASSWORD","HOST","USERNAME"]
-        args: ["--debug", "--rm"]
+      secrets: ["PASSWORD","HOST","USERNAME"]
+      args: ["--debug", "--rm"]
