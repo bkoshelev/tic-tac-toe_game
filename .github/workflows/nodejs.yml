@@ -1,33 +1,26 @@
-name: build and deploy
-
-on: [push]
-
+on: push
+name: New workflow
 jobs:
-  build:
-
+  install:
+    name: Install
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@master
+    - name: Install
+      uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run build
-      env:
-        CI: true
-        NODE_ENV: production
-    - name: send
+        args: install
+    - name: Build
+      uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
+      with:
+        args: build
+    - name: Deploy
       uses: appleboy/scp-action@v0.0.1
       env:
+        HOST: ${{ secrets.HOST }}
+        PASSWORD: ${{ secrets.PASSWORD }}
         SOURCE: dist
         TARGET: /home/bkoshelev/tic-tac-toe_game/game
-      secrets: ["PASSWORD","HOST","USERNAME"]
-      args: ["--debug", "--rm"]
+        USERNAME: ${{ secrets.USERNAME }}
+      with:
+        args: --debug --rm
