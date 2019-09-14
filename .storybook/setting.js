@@ -7,12 +7,10 @@ const pageWrapperDecoratorStyle = css`
   :global() {
     body {
       margin: 0px;
+      overflow-x: hidden;
     }
   }
 `;
-
-
-
 
 const pageWrapperDecorator = storyFn => (
   <div
@@ -31,7 +29,6 @@ const pageWrapperDecorator = storyFn => (
 
 const mobileViewPortSetting = {
     parameters: { viewport: { defaultViewport: 'iphone6' } },
-   // decorators: [pageWrapperDecorator],
   };
 
   const desktopViewPortSetting = {
@@ -42,8 +39,26 @@ const mobileViewPortSetting = {
         height: '50%',
       },
     },
-  //  decorators: [pageWrapperDecorator],
   };
 
+  const ZoomImage = ({ children}) => {
 
-export { mobileViewPortSetting, desktopViewPortSetting, pageWrapperDecorator}
+    const style = css`
+    transition-duration: 1s;
+
+     
+      &:hover {
+        @media only screen and (orientation: landscape) {
+        position: relative;
+        
+          transform: translateX(10vw) scale(2);
+          z-index: 999; 
+        }
+      }
+    `;
+
+    return <div className={style}>{children}</div>
+  }
+
+
+export { mobileViewPortSetting, desktopViewPortSetting, pageWrapperDecorator, ZoomImage}
