@@ -12,13 +12,16 @@ jobs:
         npm run build
       env:
         NODE_ENV: production
+    - name: Rename Folder
+      run: |
+        mv ./dist ./tic-tac-toe_game
     - name: Deploy
       uses: appleboy/scp-action@v0.0.1
       env:
         HOST: ${{ secrets.HOST }}
         PASSWORD: ${{ secrets.PASSWORD }}
-        SOURCE: dist/.
-        TARGET: /home/bkoshelev/tic-tac-toe_game/game
+        SOURCE: tic-tac-toe_game
+        TARGET: /home/bkoshelev
         USERNAME: ${{ secrets.USERNAME }}
       with:
         args: --debug --rm
