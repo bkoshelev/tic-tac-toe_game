@@ -133,7 +133,7 @@ const OnFinishGameUI = ({ text }) => {
       <section className={cx(textStyle, text4style)}>
         <Header>Если вы хотите увидеть документацию к игре</Header>
         <article>
-          <a href="/game/documentation">
+          <a href="/game_documentation">
             <StorybookIcon
               className={storybookIconStyle}
               viewBox={'250 0 50 100'}
