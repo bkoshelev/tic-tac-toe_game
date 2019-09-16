@@ -2,6 +2,7 @@ import appState from './../.storybook/static/appState.jpg';
 import gameState from './../.storybook/static/gameState.jpg';
 import backendOnEnterState from './../.storybook/static/backendOnEnterState.jpg';
 import backendGameBuilder from './../.storybook/static/backendGameBuilder.jpg';
+import dbModels from './../.storybook/static/dbModels.jpg';
 import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
 
 <Meta title="Крестики-Нолики|Начало" parameters={{ options: { showPanel: false, isFullscreen: true}}} decorators={[pageWrapperDecorator]} />
@@ -32,15 +33,18 @@ import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
 
 ## Front-End
 
-### Техническое задание // Постановка  (продуктовой )задачи (начало)
+### Ссылка на репозиторий 
 
+> https://github.com/grom194/tic-tac-toe_game
+
+### Техническое задание
 Необходимо реализовать:
 
 - стартовый экран, с предложением начать игру
 - экран ожидания загрузки игры
 - экран игры
 - экран окончания игры
-- адаптивность 
+- адаптивность приложения для мобильных устройств, вертикального и горизонтального режимов экрана
 
 ### Дизайн 
 
@@ -86,7 +90,7 @@ import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
 
 Компоненты разбиты на Контейнеры и Презентационные [подробнее...](https://medium.com/@abraztsov/%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B-%D0%B2-react-e5092c06f019)
 
-##### Именование стилей
+##### Именование компонентов
 - **ComponentName** - Container Component (компонент с внутренним состоянием и логикой)
 - **[ComponentName]UI** - Presentation Component (компонент без логики)
 - **[ComponentName]Page** - компонент страницы проекта
@@ -97,9 +101,9 @@ import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
 
 Ядро проекта - одностраничное приложение с несколькими экранами.
 
-Логика в проекте реализована с помощью State Machine.
+Логика в проекте реализована с помощью автоматов(state machine).
 
-Библиотека **xstate** позволяет визуализировать машины [пример](https://xstate.js.org/viz/)
+Библиотека **Xstate** позволяет визуализировать автоматы. [Пример...](https://xstate.js.org/viz/)
 
 <left>
 <figure>
@@ -124,11 +128,17 @@ import { ZoomImage, pageWrapperDecorator } from './../.storybook/setting.js';
 
 Скоро...
 
-#### 6. deploy на сервер
+#### 6. Deploy на сервер
 
-Скоро...
+Выгрузка на сервер реализована с помощью сервиса  Github Action ([файл конфигурации](https://github.com/grom194/tic-tac-toe_game/blob/master/.github/workflows/nodejs.yml)), что позволят легко обновлять проект на сервере по **push** событию в репозиторий.
 
 ## Back-end
+
+### Ссылка на файлы Back-End части
+
+> https://github.com/grom194/bkoshelev-cms/tree/master/config/functions
+
+### Описание
 
 Back-End часть проекта реализована на базе [**CMS Strapi**](https://github.com/strapi/strapi)
 
@@ -139,6 +149,14 @@ Back-End часть проекта реализована на базе [**CMS S
 - **Rooms** (Комнаты)
 - **Players** (Игроки)
 - **Moves** (Действия) *// в данной игре используется исключительно для логирования*
+
+
+<figure>
+    <ZoomImage>
+  <img src={dbModels}  height="200px" />
+    </ZoomImage>
+  <figcaption>Схема связей моделей</figcaption>
+</figure>
 
 Машина состояний выступает в роли посредника между Front-End частю проекта и Базой Данных.
 
