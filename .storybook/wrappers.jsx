@@ -7,6 +7,6 @@ const littleCenterWrapperStyle = css`
   display: grid;
 `;
 
-const LittleCenterWrapper = ({children}) => <div class={littleCenterWrapperStyle}>{children}</div>;
+const LittleCenterWrapper = ({children}) => <div className={littleCenterWrapperStyle}>{children}</div>;
 
 export { LittleCenterWrapper};
