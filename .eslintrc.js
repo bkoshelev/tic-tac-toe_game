@@ -4,6 +4,9 @@ module.exports = {
     es6: true,
     jest: true
   },
+  globals: {
+    jestPuppeteer: true,
+  },
   parser: "babel-eslint",
   extends: [
     "eslint:recommended",
