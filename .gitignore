@@ -64,3 +64,4 @@ typings/
 dist
 .linaria-cache
 storybook-static
+.history
