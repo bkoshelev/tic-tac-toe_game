@@ -38,14 +38,17 @@ const cicleEventStyle = css`
   }
 `;
 
+const vibrationTime = 100;
+
 const BoardCell = ({ row, column }) => {
   const updateGameState = useContext(UpdateGameScreenContext);
   const gameState = useContext(GameScreenContext);
   const cellSignType = gameState.context.state[row][column];
 
   const onClick = () => {
-    const vibrationTime = 100;
-    window.navigator.vibrate(vibrationTime);
+    if (window.navigator && window.navigator.vibrate) {
+      window.navigator.vibrate(vibrationTime);
+    }
     updateGameState('MAKE_MOVE', { row, column });
   };
 
