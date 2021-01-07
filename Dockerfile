@@ -2,7 +2,7 @@ FROM node:alpine as build
 
 WORKDIR /build
 COPY package.json /build/
-RUN npm ci
+RUN npm i
 COPY . .
 RUN npm run build-storybook
 
