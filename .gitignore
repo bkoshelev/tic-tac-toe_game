@@ -65,3 +65,5 @@ dist
 .linaria-cache
 storybook-static
 .history
+.*
+!.github
